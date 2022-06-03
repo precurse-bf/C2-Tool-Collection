@@ -80,6 +80,14 @@ jobs:
           chmod +x ./make_bof.sh
           ./make_bof.sh PetitPotam
 
+      - name: Backstab
+        run: |
+          sudo sed -i 's/focal/kinetic/g' /etc/apt/sources.list
+          sudo apt update
+          sudo apt install -y binutils-mingw-w64 gcc-mingw-w64 mingw-w64-tools mingw-w64 mingw-w64-x86-64-dev g++-mingw-w64 mingw-w64-common mingw-w64-i686-dev
+          chmod +x ./make_bof.sh
+          ./make_bof.sh Backstab
+
       - name: "Publish Release"
         uses: "marvinpinto/action-automatic-releases@latest"
         with:

@@ -1,0 +1,26 @@
+{
+    "name": "C2-Tool-Collection Backstab BOF",
+    "version": "v0.0.0",
+    "command_name": "c2tc-backstab",
+    "extension_author": "aklaus-bf",
+    "original_author": "Yaxser",
+    "repo_url": "https://github.com/sliverarmory/C2-Tool-Collection",
+    "help": "This is a Beacon Object File combined implementation of Yaxser's Backstab.",
+    "depends_on": "coff-loader",
+    "entrypoint": "go",
+    "files": [
+      {
+        "os": "windows",
+        "arch": "amd64",
+        "path": "Backstab.o"
+      }
+    ],
+    "arguments": [
+      {
+        "name": "accountName",
+        "desc": "Computer Name",
+        "type": "string",
+        "optional": false
+      }
+    ]
+  }
