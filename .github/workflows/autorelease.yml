@@ -75,6 +75,11 @@ jobs:
           chmod +x ./make_bof.sh
           ./make_bof.sh Lapsdump
 
+      - name: Lapsdump
+        run: |
+          chmod +x ./make_bof.sh
+          ./make_bof.sh Backstab
+
       - name: PetitPotam
         run: |
           chmod +x ./make_bof.sh
