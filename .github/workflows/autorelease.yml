@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo apt-get update --fix-missing && sudo apt-get -y install \
           git build-essential zlib1g zlib1g-dev wget zip unzip \
-          mingw-w64 binutils-mingw-w64 g++-mingw-w64 gcc-multilib jq
+          mingw-w64 binutils-mingw-w64 g++-mingw-w64 gcc-multilib jq software-properties-common
 
       - name: Minisign
         run: |
@@ -75,15 +75,18 @@ jobs:
           chmod +x ./make_bof.sh
           ./make_bof.sh Lapsdump
 
-      - name: Lapsdump
-        run: |
-          chmod +x ./make_bof.sh
-          ./make_bof.sh Backstab
-
       - name: PetitPotam
         run: |
           chmod +x ./make_bof.sh
           ./make_bof.sh PetitPotam
+
+      - name: Backstab
+        run: |
+          sudo sed -i 's/focal/kinetic/g' /etc/apt/sources.list
+          sudo apt update
+          sudo apt install -y binutils-mingw-w64 gcc-mingw-w64 mingw-w64-tools mingw-w64 mingw-w64-x86-64-dev g++-mingw-w64 mingw-w64-common mingw-w64-i686-dev
+          chmod +x ./make_bof.sh
+          ./make_bof.sh Backstab
 
       - name: "Publish Release"
         uses: "marvinpinto/action-automatic-releases@latest"
